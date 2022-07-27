@@ -136,3 +136,12 @@ esposo(nicolasII,alejandraDeHesse).
 
 
 esposa(X,Y) :- persona(X,fem),esposo(Y,X).
+
+% Definicion de hermano, se lee
+% hermano(X,Y) donde X es una persona
+% masculina con el mismo padre o madre que Y.
+
+
+hermano(X,Y) :- persona(X,masc),
+    ((padre(Z,X),padre(Z,Y));(madre(Z,X),madre(Z,Y)))
+    , X \= Y.

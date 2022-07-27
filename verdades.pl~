@@ -115,7 +115,7 @@ esposo(alexei,mariaMiloslavskaya).
 esposo(alexei,nataliaNayshkina).
 esposo(ivanV,praskoviaSaltikova).
 esposo(carlosLeopoldo,ekaterina).
-esposo(anotonio,anaLeopoldovna).
+esposo(antonio,anaLeopoldovna).
 esposo(pedroI,eudoxiaLopukhina).
 esposo(pedroI,catalinaI).
 esposo(alexeiPedroI,carlota).
@@ -136,3 +136,11 @@ esposo(nicolasII,alejandraDeHesse).
 
 
 esposa(X,Y) :- persona(X,fem),esposo(Y,X).
+
+% Definicion de hermano, se lee
+% hermano(X,Y) donde X es una persona
+% masculina con el mismo padre o madre que Y.
+
+
+hermano(X,Y) :- (persona(X,masc),X \== Y),
+    ((padre(Z,X),padre(Z,Y));(madre(Z,X),madre(Z,Y))).
