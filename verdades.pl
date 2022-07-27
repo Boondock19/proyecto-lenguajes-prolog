@@ -145,3 +145,11 @@ esposa(X,Y) :- persona(X,fem),esposo(Y,X).
 hermano(X,Y) :- persona(X,masc),
     ((padre(Z,X),padre(Z,Y));(madre(Z,X),madre(Z,Y)))
     , X \= Y.
+
+% Definicion de hermana, se lee
+% hermana(X,Y) donde X es una persona
+% femenina con el mismo padre o madre que Y.
+
+hermana(X,Y) :- persona(X,fem),
+    ((padre(Z,X),padre(Z,Y));(madre(Z,X),madre(Z,Y)))
+    , X \= Y.
