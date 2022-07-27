@@ -183,3 +183,17 @@ hijo(X,Y) :- persona(X,masc),
 
 hija(X,Y) :- persona(X,fem),
     (padre(Y,X);madre(Y,X)).
+
+% Definicion de nieto, se lee
+% nieto(X,Y) donde X es hijo de
+% un hijo o hija de Y.
+
+nieto(X,Y) :- persona(X,masc),
+    ((hijo(Z,Y);hija(Z,Y)),hijo(X,Z)).
+
+% Definicion de nieta, se lee
+% nieta(X,Y), donde X es hija de
+% un hijo o hija de Y.
+
+nieta(X,Y) :- persona(X,fem),
+    ((hijo(Z,Y);hija(Z,Y)),hija(X,Z)).

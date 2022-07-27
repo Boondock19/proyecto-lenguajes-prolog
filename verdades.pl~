@@ -169,3 +169,31 @@ abuelo(X,Y) :- persona(X,masc),
 
 abuela(X,Y) :- persona(X,fem),
     ((madre(X,Z),(padre(Z,Y);madre(Z,Y)))).
+
+% Definicion de hijo, se lee
+% hijo(X,Y) donde X es el hijo y
+% su padre o madre es Y.
+
+hijo(X,Y) :- persona(X,masc),
+    (padre(Y,X);madre(Y,X)).
+
+% Definicion de hija, se lee
+% hija(X,Y) donde X es la hija y
+% su padre o madre es Y.
+
+hija(X,Y) :- persona(X,fem),
+    (padre(Y,X);madre(Y,X)).
+
+% Definicion de nieto, se lee
+% nieto(X,Y) donde X es hijo de
+% un hijo o hija de Y.
+
+nieto(X,Y) :- persona(X,masc),
+    ((hijo(Z,Y);hija(Z,Y)),hijo(X,Z)).
+
+% Definicion de nieta, se lee
+% nieta(X,Y), donde X es hija de
+% un hijo o hija de Y.
+
+nieta(X,Y) :- persona(X,fem),
+    ((hijo(Z,Y);hija(Z,Y)),hijo(X,Z)).
