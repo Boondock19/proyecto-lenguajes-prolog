@@ -161,3 +161,11 @@ hermana(X,Y) :- persona(X,fem),
 
 abuelo(X,Y) :- persona(X,masc),
     ((padre(X,Z),(padre(Z,Y);madre(Z,Y)))).
+
+% Definicion de abuela, se lee
+% abuela(X,Y) donde X es la madre
+% del padre de Y o de la madre de Y.
+
+
+abuela(X,Y) :- persona(X,fem),
+    ((madre(X,Z),(padre(Z,Y);madre(Z,Y)))).

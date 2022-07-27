@@ -169,3 +169,17 @@ abuelo(X,Y) :- persona(X,masc),
 
 abuela(X,Y) :- persona(X,fem),
     ((madre(X,Z),(padre(Z,Y);madre(Z,Y)))).
+
+% Definicion de hijo, se lee
+% hijo(X,Y) donde X es el hijo y
+% su padre o madre es Y.
+
+hijo(X,Y) :- persona(X,masc),
+    (padre(Y,X);madre(Y,X)).
+
+% Definicion de hija, se lee
+% hija(X,Y) donde X es la hija y
+% su padre o madre es Y.
+
+hija(X,Y) :- persona(X,fem),
+    (padre(Y,X);madre(Y,X)).
