@@ -1,50 +1,50 @@
-% Hecho : Personas
-% se leen de manera persona(X,Y)
-% donde X es una persona de genero
+% Hecho : personajes
+% se leen de manera personaje(X,Y)
+% donde X es una personaje de genero
 % Y
 
-persona(miguelI,masc).
-persona(eudoxiaStres,fem).
-persona(alexei,masc).
-persona(mariaMiloslavskaya,fem).
-persona(nataliaNayshkina,fem).
-persona(fiodor,masc).
-persona(sofia,fem).
-persona(ivanV,masc).
-persona(pedroI,masc).
-persona(eudoxiaLopukhina,fem).
-persona(catalinaI,fem).
-persona(praskoviaSaltikova,fem).
-persona(ana,fem).
-persona(ekaterina,fem).
-persona(carlosLeopoldo,masc).
-persona(anaLeopoldovna,fem).
-persona(antonio,masc).
-persona(ivanVI,masc).
-persona(alexeiPedroI,masc).
-persona(carlota,fem).
-persona(pedroII,masc).
-persona(anaPedroI,fem).
-persona(carlosFederico,masc).
-persona(isabel,fem).
-persona(pedroIII,masc).
-persona(catalinaII,fem).
-persona(pablo,masc).
-persona(mariaFiodorwna,fem).
-persona(alejandroI,masc).
-persona(constantino,masc).
-persona(nicolasI,masc).
-persona(alejandraFiodorovna,fem).
-persona(alejandroII,masc).
-persona(mariaDeHesse,fem).
-persona(nikolai,masc).
-persona(alejandroIII,masc).
-persona(mariaFiodorovna,fem).
-persona(georgi,masc).
-persona(miguelII,masc).
-persona(nicolasII,masc).
-persona(alejandraDeHesse,fem).
-persona(alexeiNicolasII,masc).
+personaje(miguelI,masc).
+personaje(eudoxiaStres,fem).
+personaje(alexei,masc).
+personaje(mariaMiloslavskaya,fem).
+personaje(nataliaNayshkina,fem).
+personaje(fiodor,masc).
+personaje(sofia,fem).
+personaje(ivanV,masc).
+personaje(pedroI,masc).
+personaje(eudoxiaLopukhina,fem).
+personaje(catalinaI,fem).
+personaje(praskoviaSaltikova,fem).
+personaje(ana,fem).
+personaje(ekaterina,fem).
+personaje(carlosLeopoldo,masc).
+personaje(anaLeopoldovna,fem).
+personaje(antonio,masc).
+personaje(ivanVI,masc).
+personaje(alexeiPedroI,masc).
+personaje(carlota,fem).
+personaje(pedroII,masc).
+personaje(anaPedroI,fem).
+personaje(carlosFederico,masc).
+personaje(isabel,fem).
+personaje(pedroIII,masc).
+personaje(catalinaII,fem).
+personaje(pablo,masc).
+personaje(mariaFiodorwna,fem).
+personaje(alejandroI,masc).
+personaje(constantino,masc).
+personaje(nicolasI,masc).
+personaje(alejandraFiodorovna,fem).
+personaje(alejandroII,masc).
+personaje(mariaDeHesse,fem).
+personaje(nikolai,masc).
+personaje(alejandroIII,masc).
+personaje(mariaFiodorovna,fem).
+personaje(georgi,masc).
+personaje(miguelII,masc).
+personaje(nicolasII,masc).
+personaje(alejandraDeHesse,fem).
+personaje(alexeiNicolasII,masc).
 
 % Hecho: Padres.
 % se leen de manera padre(X,Y)
@@ -128,29 +128,29 @@ esposo(alejandroIII,mariaFiodorovna).
 esposo(nicolasII,alejandraDeHesse).
 
 
-% Definiciones, todos deben ser personas.
+% Definiciones, todos deben ser personajes.
 
 
 % Definicion de esposa, se lee
 % esposa(X,Y) donde X es esposa de Y.
 
 
-esposa(X,Y) :- persona(X,fem),esposo(Y,X).
+esposa(X,Y) :- personaje(X,fem),esposo(Y,X).
 
 % Definicion de hermano, se lee
-% hermano(X,Y) donde X es una persona
+% hermano(X,Y) donde X es una personaje
 % masculina con el mismo padre o madre que Y.
 
 
-hermano(X,Y) :- persona(X,masc),
+hermano(X,Y) :- personaje(X,masc),
     ((padre(Z,X),padre(Z,Y));(madre(Z,X),madre(Z,Y)))
     , X \= Y.
 
 % Definicion de hermana, se lee
-% hermana(X,Y) donde X es una persona
+% hermana(X,Y) donde X es una personaje
 % femenina con el mismo padre o madre que Y.
 
-hermana(X,Y) :- persona(X,fem),
+hermana(X,Y) :- personaje(X,fem),
     ((padre(Z,X),padre(Z,Y));(madre(Z,X),madre(Z,Y)))
     , X \= Y.
 
@@ -159,7 +159,7 @@ hermana(X,Y) :- persona(X,fem),
 % del padre de Y o de la madre de Y.
 
 
-abuelo(X,Y) :- persona(X,masc),
+abuelo(X,Y) :- personaje(X,masc),
     ((padre(X,Z),(padre(Z,Y);madre(Z,Y)))).
 
 % Definicion de abuela, se lee
@@ -167,35 +167,35 @@ abuelo(X,Y) :- persona(X,masc),
 % del padre de Y o de la madre de Y.
 
 
-abuela(X,Y) :- persona(X,fem),
+abuela(X,Y) :- personaje(X,fem),
     ((madre(X,Z),(padre(Z,Y);madre(Z,Y)))).
 
 % Definicion de hijo, se lee
 % hijo(X,Y) donde X es el hijo y
 % su padre o madre es Y.
 
-hijo(X,Y) :- persona(X,masc),
+hijo(X,Y) :- personaje(X,masc),
     (padre(Y,X);madre(Y,X)).
 
 % Definicion de hija, se lee
 % hija(X,Y) donde X es la hija y
 % su padre o madre es Y.
 
-hija(X,Y) :- persona(X,fem),
+hija(X,Y) :- personaje(X,fem),
     (padre(Y,X);madre(Y,X)).
 
 % Definicion de nieto, se lee
 % nieto(X,Y) donde X es hijo de
 % un hijo o hija de Y.
 
-nieto(X,Y) :- persona(X,masc),
+nieto(X,Y) :- personaje(X,masc),
     ((hijo(Z,Y);hija(Z,Y)),hijo(X,Z)).
 
 % Definicion de nieta, se lee
 % nieta(X,Y), donde X es hija de
 % un hijo o hija de Y.
 
-nieta(X,Y) :- persona(X,fem),
+nieta(X,Y) :- personaje(X,fem),
     ((hijo(Z,Y);hija(Z,Y)),hija(X,Z)).
 
 
@@ -203,37 +203,37 @@ nieta(X,Y) :- persona(X,fem),
 % tio(X,Y) donde X es el hermano
 % del padre o madre de Y
 
-tio(X,Y) :- persona(X,masc),
+tio(X,Y) :- personaje(X,masc),
     (hermano(X,Z),(padre(Z,Y);madre(Z,Y))).
 
 % Definicion de tia, se lee
 % tia(X,Y) donde X es el hermana
 % del padre o madre de Y
 
-tia(X,Y) :- persona(X,fem),
+tia(X,Y) :- personaje(X,fem),
     (hermana(X,Z),(padre(Z,Y);madre(Z,Y))).
 
 % Definicion de sobrino, se lee
 % sobrino(X,Y) donde X es el hijo
 % del hermano o hermana de Y
 
-sobrino(X,Y) :- persona(X,masc),
+sobrino(X,Y) :- personaje(X,masc),
     (hijo(X,Z),(hermano(Z,Y);hermana(Z,Y))).
 
 % Definicion de sobrina, se lee
 % sobrina(X,Y) donde X es la hija
 % del hermano o hermana de Y
 
-sobrina(X,Y) :- persona(X,fem),
+sobrina(X,Y) :- personaje(X,fem),
     (hija(X,Z),(hermano(Z,Y);hermana(Z,Y))).
 
-% Definicion de cuñado, se lee
+% Definicion de cuï¿½ado, se lee
 % cunado(X,Y) donde X puede ser el esposo
 % del hermano o hermana de Y.
 % O donde X puede ser el hermano
 % del esposo o esposa de Y
 
-cuñado(X,Y) :- persona(X,masc),
+cuï¿½ado(X,Y) :personajena(X,masc),
     ((esposo(X,Z),(hermano(Z,Y);hermana(Z,Y)));
     (hermano(X,Z),(esposo(Z,Y);esposa(Z,Y)))).
 
@@ -243,7 +243,7 @@ cuñado(X,Y) :- persona(X,masc),
 % O donde X puede ser la hermana
 % del esposo o esposa de Y
 
-cuñada(X,Y) :- persona(X,fem),
+cuï¿½ada(X,Y) :personajena(X,fem),
     ((esposa(X,Z),(hermano(Z,Y);hermana(Z,Y)));
     (hermana(X,Z),(esposo(Z,Y);esposa(Z,Y)))).
 
@@ -251,12 +251,12 @@ cuñada(X,Y) :- persona(X,fem),
 % suegro(X,Y) donde X es el padre
 % del esposo o la esposa de Y
 
-suegro(X,Y) :- persona(X,masc),
+suegro(X,Y) :- personaje(X,masc),
     (padre(X,Z),(esposo(Z,Y);esposa(Z,Y))).
 
 % Definicion de suegra, se lee
 % suegro(X,Y) donde X es la madre
 % del esposo o la esposa de Y
 
-suegra(X,Y) :- persona(X,fem),
+suegra(X,Y) :- personaje(X,fem),
     (madre(X,Z),(esposo(Z,Y);esposa(Z,Y))).

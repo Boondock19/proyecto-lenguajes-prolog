@@ -1,32 +1,32 @@
-% Hecho : Personas
-% se leen de manera persona(X,Y)
-% donde X es una persona de genero
+% Hecho : personajes
+% se leen de manera personaje(X,Y)
+% donde X es una personaje de genero
 % Y
-persona(joseArcadioBuenDia,masc).
-persona(ursula,fem).
-persona(rebeca,fem).
-persona(joseArcadio,masc).
-persona(amaranta,fem).
-persona(pilar,fem).
-persona(coronelAureliano,masc).
-persona(remediosMoscote,fem).
-persona(arcadio,masc).
-persona(aurelianoJose,masc).
-persona(santaSofia,fem).
-persona(carmelita,fem).
-persona(aurelianos17,masc).
-persona(remediosLaBella,fem).
-persona(aurelianoII,masc).
-persona(joseArcadioII,masc).
-persona(petra,fem).
-persona(fernanda,fem).
-persona(meme,fem).
-persona(mauricio,masc).
-persona(joseArcadioIII,masc).
-persona(amarantaUrsula,fem).
-persona(gaston,masc).
-persona(aurelianoBabilonia,masc).
-persona(aureliano,masc).
+personaje(joseArcadioBuenDia,masc).
+personaje(ursula,fem).
+personaje(rebeca,fem).
+personaje(joseArcadio,masc).
+personaje(amaranta,fem).
+personaje(pilar,fem).
+personaje(coronelAureliano,masc).
+personaje(remediosMoscote,fem).
+personaje(arcadio,masc).
+personaje(aurelianoJose,masc).
+personaje(santaSofia,fem).
+personaje(carmelita,fem).
+personaje(aurelianos17,masc).
+personaje(remediosLaBella,fem).
+personaje(aurelianoII,masc).
+personaje(joseArcadioII,masc).
+personaje(petra,fem).
+personaje(fernanda,fem).
+personaje(meme,fem).
+personaje(mauricio,masc).
+personaje(joseArcadioIII,masc).
+personaje(amarantaUrsula,fem).
+personaje(gaston,masc).
+personaje(aurelianoBabilonia,masc).
+personaje(aureliano,masc).
 
 
 
@@ -90,33 +90,33 @@ elAmante(mauricio,meme).
 elAmante(aurelianoBabilonia,amarantaUrsula).
 
 
-% Definiciones, todos deben ser personas.
+% Definiciones, todos deben ser personajes.
 
 
 % Definicion de esposa, se lee
 % esposa(X,Y) donde X es esposa de Y.
 
-esposa(X,Y) :- persona(X,fem),esposo(Y,X).
+esposa(X,Y) :- personaje(X,fem),esposo(Y,X).
 
 % Definicion de amante femenina, se lee
 % laAmante(X,Y) donde X es la amante de Y.
 
-laAmante(X,Y) :- persona(X,fem),elAmante(Y,X).
+laAmante(X,Y) :- personaje(X,fem),elAmante(Y,X).
 
 % Definicion de hermano, se lee
-% hermano(X,Y) donde X es una persona
+% hermano(X,Y) donde X es una personaje
 % masculina con el mismo padre o madre que Y.
 
 
-hermano(X,Y) :- persona(X,masc),
+hermano(X,Y) :- personaje(X,masc),
     ((padre(Z,X),padre(Z,Y));(madre(Z,X),madre(Z,Y)))
     , X \= Y.
 
 % Definicion de hermana, se lee
-% hermana(X,Y) donde X es una persona
+% hermana(X,Y) donde X es una personaje
 % femenina con el mismo padre o madre que Y.
 
-hermana(X,Y) :- persona(X,fem),
+hermana(X,Y) :- personaje(X,fem),
     ((padre(Z,X),padre(Z,Y));(madre(Z,X),madre(Z,Y)))
     , X \= Y.
 
@@ -125,7 +125,7 @@ hermana(X,Y) :- persona(X,fem),
 % del padre de Y o de la madre de Y.
 
 
-abuelo(X,Y) :- persona(X,masc),
+abuelo(X,Y) :- personaje(X,masc),
     ((padre(X,Z),(padre(Z,Y);madre(Z,Y)))).
 
 % Definicion de abuela, se lee
@@ -133,35 +133,35 @@ abuelo(X,Y) :- persona(X,masc),
 % del padre de Y o de la madre de Y.
 
 
-abuela(X,Y) :- persona(X,fem),
+abuela(X,Y) :- personaje(X,fem),
     ((madre(X,Z),(padre(Z,Y);madre(Z,Y)))).
 
 % Definicion de hijo, se lee
 % hijo(X,Y) donde X es el hijo y
 % su padre o madre es Y.
 
-hijo(X,Y) :- persona(X,masc),
+hijo(X,Y) :- personaje(X,masc),
     (padre(Y,X);madre(Y,X)).
 
 % Definicion de hija, se lee
 % hija(X,Y) donde X es la hija y
 % su padre o madre es Y.
 
-hija(X,Y) :- persona(X,fem),
+hija(X,Y) :- personaje(X,fem),
     (padre(Y,X);madre(Y,X)).
 
 % Definicion de nieto, se lee
 % nieto(X,Y) donde X es hijo de
 % un hijo o hija de Y.
 
-nieto(X,Y) :- persona(X,masc),
+nieto(X,Y) :- personaje(X,masc),
     ((hijo(Z,Y);hija(Z,Y)),hijo(X,Z)).
 
 % Definicion de nieta, se lee
 % nieta(X,Y), donde X es hija de
 % un hijo o hija de Y.
 
-nieta(X,Y) :- persona(X,fem),
+nieta(X,Y) :- personaje(X,fem),
     ((hijo(Z,Y);hija(Z,Y)),hija(X,Z)).
 
 
@@ -169,28 +169,28 @@ nieta(X,Y) :- persona(X,fem),
 % tio(X,Y) donde X es el hermano
 % del padre o madre de Y
 
-tio(X,Y) :- persona(X,masc),
+tio(X,Y) :- personaje(X,masc),
     (hermano(X,Z),(padre(Z,Y);madre(Z,Y))).
 
 % Definicion de tia, se lee
 % tia(X,Y) donde X es el hermana
 % del padre o madre de Y
 
-tia(X,Y) :- persona(X,fem),
+tia(X,Y) :- personaje(X,fem),
     (hermana(X,Z),(padre(Z,Y);madre(Z,Y))).
 
 % Definicion de sobrino, se lee
 % sobrino(X,Y) donde X es el hijo
 % del hermano o hermana de Y
 
-sobrino(X,Y) :- persona(X,masc),
+sobrino(X,Y) :- personaje(X,masc),
     (hijo(X,Z),(hermano(Z,Y);hermana(Z,Y))).
 
 % Definicion de sobrina, se lee
 % sobrina(X,Y) donde X es la hija
 % del hermano o hermana de Y
 
-sobrina(X,Y) :- persona(X,fem),
+sobrina(X,Y) :- personaje(X,fem),
     (hija(X,Z),(hermano(Z,Y);hermana(Z,Y))).
 
 % Definicion de cu�ado, se lee
@@ -199,7 +199,7 @@ sobrina(X,Y) :- persona(X,fem),
 % O donde X puede ser el hermano
 % del esposo o esposa de Y
 
-cu�ado(X,Y) :- persona(X,masc),
+cu�ado(X,Y) :- personaje(X,masc),
     ((esposo(X,Z),(hermano(Z,Y);hermana(Z,Y)));
     (hermano(X,Z),(esposo(Z,Y);esposa(Z,Y)))).
 
@@ -209,7 +209,7 @@ cu�ado(X,Y) :- persona(X,masc),
 % O donde X puede ser la hermana
 % del esposo o esposa de Y
 
-cu�ada(X,Y) :- persona(X,fem),
+cu�ada(X,Y) :- personaje(X,fem),
     ((esposa(X,Z),(hermano(Z,Y);hermana(Z,Y)));
     (hermana(X,Z),(esposo(Z,Y);esposa(Z,Y)))).
 
@@ -217,12 +217,12 @@ cu�ada(X,Y) :- persona(X,fem),
 % suegro(X,Y) donde X es el padre
 % del esposo o la esposa de Y
 
-suegro(X,Y) :- persona(X,masc),
+suegro(X,Y) :- personaje(X,masc),
     (padre(X,Z),(esposo(Z,Y);esposa(Z,Y))).
 
 % Definicion de suegra, se lee
 % suegro(X,Y) donde X es la madre
 % del esposo o la esposa de Y
 
-suegra(X,Y) :- persona(X,fem),
+suegra(X,Y) :- personaje(X,fem),
     (madre(X,Z),(esposo(Z,Y);esposa(Z,Y))).

@@ -1,0 +1,397 @@
+
+/** <module> Familias
+ *
+ *  Este modulo implementa las relaciones del proyecto
+ *  de prolog, tomando como muestra el arbol genealogico
+ *  de 100 aÃ±os de soledad.
+ *
+ *  @author Ana Sofia Santos C (Prolog code y PlDoc markup)
+ *  @author Jose Matias Gonzalez V (Prolog code y PlDoc markup)
+ *  @version ch1.0
+ *  @see http://www.pathwayslms.com/swipltuts/html/index.html
+ *  @copyright (c)2022 Ana Sofia Santos C y Jose Matias Gonzalez V.
+ *  @license All rights reserved.  Used with permission.
+ *
+ */
+
+
+
+%% personaje(+Nombre:atomo,Genero:atomo) is nondet
+%
+%  Hecho que indica el nombre y el genero de un personaje.
+%  Se leen de manera personaje(X,Y) donde X es una personaje
+%  de genero Y .
+%
+%  @param Nombre Nombre del personaje.
+%  @param Genero Genero del personaje.
+
+personaje(joseArcadioBuenDia,masc).
+personaje(ursula,fem).
+personaje(rebeca,fem).
+personaje(joseArcadio,masc).
+personaje(amaranta,fem).
+personaje(pilar,fem).
+personaje(coronelAureliano,masc).
+personaje(remediosMoscote,fem).
+personaje(arcadio,masc).
+personaje(aurelianoJose,masc).
+personaje(santaSofia,fem).
+personaje(carmelita,fem).
+personaje(aurelianos17,masc).
+personaje(remediosLaBella,fem).
+personaje(aurelianoII,masc).
+personaje(joseArcadioII,masc).
+personaje(petra,fem).
+personaje(fernanda,fem).
+personaje(meme,fem).
+personaje(mauricio,masc).
+personaje(joseArcadioIII,masc).
+personaje(amarantaUrsula,fem).
+personaje(gaston,masc).
+personaje(aurelianoBabilonia,masc).
+personaje(aureliano,masc).
+
+
+%% padre(+NombrePadre:atomo,NombreHijo:atomo) is nondet
+%
+%  Hecho que indica el nombre del padre de un personaje y
+%  el nombre del hijo/a.
+%  Se leen de manera padre(X,Y) donde X es el padre de Y.
+%
+%  @param NombrePadre Nombre del personaje que representa a un padre.
+%  @param NombreHijo Nombre del personaje que representa a un hijo/a.
+
+padre(joseArcadioBuenDia,rebeca).
+padre(joseArcadioBuenDia,joseArcadio).
+padre(joseArcadioBuenDia,amaranta).
+padre(joseArcadioBuenDia,coronelAureliano).
+padre(joseArcadio,arcadio).
+padre(coronelAureliano,aurelianoJose).
+padre(coronelAureliano,aurelianos17).
+padre(arcadio,remediosLaBella).
+padre(arcadio,aurelianoII).
+padre(arcadio,joseArcadioII).
+padre(aurelianoII,meme).
+padre(aurelianoII,joseArcadioIII).
+padre(aurelianoII,amarantaUrsula).
+padre(mauricio,aurelianoBabilonia).
+padre(aurelianoBabilonia,aureliano).
+
+%% madre(+NombreMadre:atomo,NombreHijo:atomo) is nondet
+%
+%  Hecho que indica el nombre de la madre de un personaje y
+%  el nombre del hijo/a.
+%  Se leen de manera madre(X,Y) donde X es la madre de Y.
+%
+%  @param NombreMadre Nombre del personaje que representa a una madre.
+%  @param NombreHijo Nombre del personaje que representa a un hijo/a.
+
+madre(ursula,rebeca).
+madre(ursula,joseArcadio).
+madre(ursula,amaranta).
+madre(ursula,coronelAureliano).
+madre(pilar,arcadio).
+madre(pilar,aurelianoJose).
+madre(santaSofia,remediosLaBella).
+madre(santaSofia,aurelianoII).
+madre(santaSofia,joseArcadioII).
+madre(fernanda,meme).
+madre(fernanda,joseArcadioIII).
+madre(fernanda,amarantaUrsula).
+madre(meme,aurelianoBabilonia).
+madre(amarantaUrsula,aureliano).
+
+
+%% esposo(+NombreEsposo:atomo,NombreEsposa:atomo) is nondet
+%
+%  Hecho que indica el nombre del esposo de un personaje y
+%  el nombre de la esposa.
+%  Se leen de manera esposo(X,Y) donde X es el esposo de Y.
+%
+%  @param NombreEsposo Nombre del personaje que representa a un esposo.
+%  @param NombreEsposa Nombre del personaje que representa a una esposa.
+
+
+esposo(joseArcadioBuenDia,ursula).
+esposo(joseArcadio,rebeca).
+esposo(coronelAureliano,remediosMoscote).
+esposo(aurelianoII,fernanda).
+esposo(amarantaUrsula,gaston).
+
+%% elAmante(+NombreAmanteMasc:atomo,NombreAmanteFem:atomo) is nondet
+%
+%  Hecho que indica el nombre del amante masculino de un personaje y
+%  el nombre de la amante.
+%  Se leen de manera elAmante(X,Y) donde X es el amante de Y.
+%
+%  @param NombreAmanteMasc Nombre del personaje que representa al amante masculino.
+%  @param NombreAmanteFem Nombre del personaje que representa a la amante.
+
+
+elAmante(joseArcadio,pilar).
+elAmante(coronelAureliano,pilar).
+elAmante(arcadio,santaSofia).
+elAmante(aurelianoJose,carmelita).
+elAmante(aurelianoII,petra).
+elAmante(joseArcadioII,petra).
+elAmante(mauricio,meme).
+elAmante(aurelianoBabilonia,amarantaUrsula).
+
+
+% Definiciones, todos deben ser personajes.
+
+
+%% esposa(+NombreEsposa:atomo,NombreEsposo:atomo) is nondet
+%
+%  Predicado que indica el nombre de la esposa de un personaje y
+%  el nombre del esposo.
+%  Se leen de manera esposa(X,Y) donde X es la esposa de Y.
+%
+%  @param NombreEsposa Nombre del personaje que representa a una esposa.
+%  @param NombreEsposo Nombre del personaje que representa a un esposa.
+
+esposa(X,Y) :- personaje(X,fem),esposo(Y,X).
+
+%% laAmante(+NombreAmanteFem:atomo,NombreAmanteMasc:atomo) is nondet
+%
+%  Predicado que indica el nombre de la amante femenina de un personaje y
+%  el nombre del amante.
+%  Se lee de manera laAmante(X,Y) donde X es la amante de Y.
+%
+%  @param NombreAmanteFem Nombre del personaje que representa al amante femenino.
+%  @param NombreAmanteMasc Nombre del personaje que representa al amante masculino.
+
+laAmante(X,Y) :- personaje(X,fem),elAmante(Y,X).
+
+%% hermano(+NombreHermano:atomo,NombreHermanos:atomo) is nondet
+%
+%  Predicado que indica el nombre del hermano de un personaje y
+%  el nombre del hermano/hermana.
+%  Se lee de manera hermano(X,Y) donde X es un personaje
+%  masculino con el mismo padre o madre que  Y.
+%
+%  @param NombreHermano Nombre del personaje que representa al hermano de Y.
+%  @param NombreHermanos Nombre del personaje que representa al hermano/a de X.
+
+hermano(X,Y) :- personaje(X,masc),
+    ((padre(Z,X),padre(Z,Y));(madre(Z,X),madre(Z,Y)))
+    , X \= Y.
+
+%% hermano(+NombreHermana:atomo,NombreHermanos:atomo) is nondet
+%
+%  Predicado que indica el nombre de la hermana de un personaje y
+%  el nombre del hermano/hermana.
+%  Se lee de manera hermana(X,Y) donde X es un personaje
+%  femenino con el mismo padre o madre que  Y.
+%
+%  @param NombreHermana Nombre del personaje que representa a la hermana de Y.
+%  @param NombreHermanos Nombre del personaje que representa al hermano/a de X.
+
+hermana(X,Y) :- personaje(X,fem),
+    ((padre(Z,X),padre(Z,Y));(madre(Z,X),madre(Z,Y)))
+    , X \= Y.
+
+%% abuelo(+NombreAbuelo:atomo,NombreNieto:atomo) is nondet
+%
+%  Predicado que indica el nombre del abuelo de un personaje y
+%  el nombre del nieto/a.
+%  Se lee de manera abuelo(X,Y) donde X es un personaje
+%  masculino y es el padre del padre o madre de Y.
+%
+%  @param NombreAbuelo Nombre del personaje que representa al abuelo de Y.
+%  @param NombreNieto Nombre del personaje que representa al nieto/a de X.
+
+
+abuelo(X,Y) :- personaje(X,masc),
+    ((padre(X,Z),(padre(Z,Y);madre(Z,Y)))).
+
+%% abuela(+NombreAbuela:atomo,NombreNieto:atomo) is nondet
+%
+%  Predicado que indica el nombre de la abuela de un personaje y
+%  el nombre del nieto/a.
+%  Se lee de manera abuela(X,Y) donde X es un personaje
+%  femenina y es la madre del padre o madre de Y.
+%
+%  @param NombreAbuela Nombre del personaje que representa a la abuela de Y.
+%  @param NombreNieto Nombre del personaje que representa al nieto/a de X.
+
+
+abuela(X,Y) :- personaje(X,fem),
+    ((madre(X,Z),(padre(Z,Y);madre(Z,Y)))).
+
+%% hijo(+NombreHijo:atomo,NombrePadre:atomo) is nondet
+%
+%  Predicado que indica el nombre del hijo de un personaje y
+%  el nombre del padre o madre.
+%  Se lee de manera hijo(X,Y) donde X es un personaje
+%  masculino y Y es la madre o padre de X.
+%
+%  @param NombreHijo Nombre del personaje que representa al hijo de Y.
+%  @param NombrePadre Nombre del personaje que representa al padre o madre de X.
+
+
+hijo(X,Y) :- personaje(X,masc),
+    (padre(Y,X);madre(Y,X)).
+
+%% hija(+NombreHija:atomo,NombrePadre:atomo) is nondet
+%
+%  Predicado que indica el nombre de la hija de un personaje y
+%  el nombre del padre o madre.
+%  Se lee de manera hija(X,Y) donde X es un personaje
+%  fememenino y Y es la madre o padre de X.
+%
+%  @param NombreHija Nombre del personaje que representa a la hija de Y.
+%  @param NombrePadre Nombre del personaje que representa al padre o madre de X.
+
+
+hija(X,Y) :- personaje(X,fem),
+    (padre(Y,X);madre(Y,X)).
+
+%% nieto(+NombreNieto:atomo,NombreAbuelo:atomo) is nondet
+%
+%  Predicado que indica el nombre del nieto de un personaje y
+%  el nombre del abuelo o abuela.
+%  Se lee de manera nieto(X,Y) donde X es un personaje
+%  masculino y es hijo de un hijo o hija de Y.
+%
+%  @param NombreNieto Nombre del personaje que representa al nieto de Y.
+%  @param NombreAbuelo Nombre del personaje que representa al abuelo o abuela de X.
+
+
+nieto(X,Y) :- personaje(X,masc),
+    ((hijo(Z,Y);hija(Z,Y)),hijo(X,Z)).
+
+
+%% nieta(+NombreNieta:atomo,NombreAbuelo:atomo) is nondet
+%
+%  Predicado que indica el nombre de la nieta de un personaje y
+%  el nombre del abuelo o abuela.
+%  Se lee de manera nieta(X,Y) donde X es un personaje
+%  fememenino y es hija de un hijo o hija de Y.
+%
+%  @param NombreNieta Nombre del personaje que representa a la nieta de Y.
+%  @param NombreAbuelo Nombre del personaje que representa al abuelo o abuela de X.
+
+nieta(X,Y) :- personaje(X,fem),
+    ((hijo(Z,Y);hija(Z,Y)),hija(X,Z)).
+
+%% tio(+NombreTio:atomo,NombreSobrino:atomo) is nondet
+%
+%  Predicado que indica el nombre del tio de un personaje y
+%  el nombre del sobrino/a.
+%  Se lee de manera tio(X,Y) donde X es un personaje
+%  masculino y es hermano del padre o madre de Y.
+%
+%  @param NombrerTio Nombre del personaje que representa al tio de Y.
+%  @param NombreSobrino Nombre del personaje que representa al sobrino/a de X.
+
+
+tio(X,Y) :- personaje(X,masc),
+    (hermano(X,Z),(padre(Z,Y);madre(Z,Y))).
+
+
+%% tia(+NombreTia:atomo,NombreSobrino:atomo) is nondet
+%
+%  Predicado que indica el nombre de la tia de un personaje y
+%  el nombre del sobrino/a.
+%  Se lee de manera tia(X,Y) donde X es un personaje
+%  femenino y es hermana del padre o madre de Y.
+%
+%  @param NombrerTia Nombre del personaje que representa a la tia de Y.
+%  @param NombreSobrino Nombre del personaje que representa al sobrino/a de X.
+
+
+tia(X,Y) :- personaje(X,fem),
+    (hermana(X,Z),(padre(Z,Y);madre(Z,Y))).
+
+%% sobrino(+NombreSobrino:atomo,NombreTio:atomo) is nondet
+%
+%  Predicado que indica el nombre del sobrino de un personaje y
+%  el nombre del tio/a.
+%  Se lee de manera sobrino(X,Y) donde X es un personaje
+%  masculino y es el hijo del hermano o hermana de Y.
+%
+%  @param NombrerSobrino Nombre del personaje que representa al sobrino de Y.
+%  @param NombreTio Nombre del personaje que representa al tio/a de X.
+
+
+sobrino(X,Y) :- personaje(X,masc),
+    (hijo(X,Z),(hermano(Z,Y);hermana(Z,Y))).
+
+
+%% sobrina(+NombreSobrina:atomo,NombreTio:atomo) is nondet
+%
+%  Predicado que indica el nombre de la sobrina de un personaje y
+%  el nombre del tio/a.
+%  Se lee de manera sobrina(X,Y) donde X es un personaje
+%  fememenino y es la hijo del hermano o hermana de Y.
+%
+%  @param NombrerSobrina Nombre del personaje que representa a la sobrina de Y.
+%  @param NombreTio Nombre del personaje que representa al tio/a de X.
+
+
+sobrina(X,Y) :- personaje(X,fem),
+    (hija(X,Z),(hermano(Z,Y);hermana(Z,Y))).
+
+
+%% cuñado(+NombreCuÃ±ado:atomo,NombreY:atomo) is nondet
+%
+%  Predicado que indica el nombre del cuñado de un personaje y
+%  el nombre del personaje del que es cuñado.
+%  Se lee de manera cuñado(X,Y) donde X es un personaje
+%  masculino y puede ser el esposo del hermano o hermana de Y.
+%  O X puede ser el hermano del esposo o esposa de Y.
+%
+%  @param NombreCuñado Nombre del personaje que representa al cuñado de
+%  Y.
+%  @param NombreY Nombre del personaje que representa de quien es
+%  cuÃ±ado X.
+
+cuñado(X,Y) :- personaje(X,masc),
+    ((esposo(X,Z),(hermano(Z,Y);hermana(Z,Y)));
+    (hermano(X,Z),(esposo(Z,Y);esposa(Z,Y)))).
+
+%% cuñada(+NombreCuñada:atomo,NombreY:atomo) is nondet
+%
+%  Predicado que indica el nombre de la cuñada de un personaje y
+%  el nombre del personaje del que es cuñada.
+%  Se lee de manera cuñada(X,Y) donde X es un personaje
+%  femenino y puede ser la esposa del hermano o hermana de Y.
+%  O X puede ser la hermana del esposo o esposa de Y.
+%
+%  @param NombreCuñada Nombre del personaje que representa a la cuñada
+%  de Y.
+%  @param NombreY Nombre del personaje que representa de quien es
+%  cuñada X.
+
+
+cuñada(X,Y) :- personaje(X,fem),
+    ((esposa(X,Z),(hermano(Z,Y);hermana(Z,Y)));
+    (hermana(X,Z),(esposo(Z,Y);esposa(Z,Y)))).
+
+%% suegro(+NombreSuegro:atomo,NombreRelacion:atomo) is nondet
+%
+%  Predicado que indica el nombre del suegro de un personaje y
+%  el nombre del personaje del que es suegro.
+%  Se lee de manera suegro(X,Y) donde X es un personaje
+%  masculino y es el padre del esposo o esposa de Y.
+%
+%  @param NombreSuegro Nombre del personaje que representa al suegro de Y.
+%  @param NombreRelacion Nombre del personaje que representa de quien es suegro X.
+
+
+suegro(X,Y) :- personaje(X,masc),
+    (padre(X,Z),(esposo(Z,Y);esposa(Z,Y))).
+
+%% suegro(+NombreSuegra:atomo,NombreRelacion:atomo) is nondet
+%
+%  Predicado que indica el nombre del suegra de un personaje y
+%  el nombre del personaje del que es suegra.
+%  Se lee de manera suegra(X,Y) donde X es un personaje
+%  femenino y es la madre del esposo o esposa de Y.
+%
+%  @param NombreSuegra Nombre del personaje que representa a la suegra de Y.
+%  @param NombreRelacion Nombre del personaje que representa de quien es suegra X.
+
+suegra(X,Y) :- personaje(X,fem),
+    (madre(X,Z),(esposo(Z,Y);esposa(Z,Y))).
